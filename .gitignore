@@ -1,0 +1,10 @@
+bin/
+obj/
+release/
+
+.env
+.env.*
+!.env.example
+.vs/
+*.user
+*.suo

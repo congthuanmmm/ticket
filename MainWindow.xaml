@@ -1,0 +1,37 @@
+<Window x:Class="ScriptNote.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="ScriptNote" Icon="assets/ScriptNote.ico" Width="400" Height="480" MinWidth="280" MinHeight="240" WindowStyle="None" ResizeMode="CanResizeWithGrip" Topmost="True" Background="#FFF8CC">
+ <WindowChrome.WindowChrome>
+  <WindowChrome CaptionHeight="0" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" NonClientFrameEdges="None" UseAeroCaptionButtons="False"/>
+ </WindowChrome.WindowChrome>
+ <Window.Resources>
+  <Style TargetType="Button">
+   <Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Foreground" Value="#665E40"/>
+   <Setter Property="Padding" Value="10,5"/><Setter Property="FontSize" Value="16"/><Setter Property="Cursor" Value="Hand"/>
+  </Style>
+ </Window.Resources>
+ <Border BorderBrush="#FFF1A5" BorderThickness="1">
+  <Grid>
+   <Grid.RowDefinitions><RowDefinition Height="40"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="42"/></Grid.RowDefinitions>
+   <Grid Background="#FFF1A5" MouseLeftButtonDown="DragHeader">
+    <TextBlock Text="ScriptNote" Margin="12,0" VerticalAlignment="Center" Foreground="#665E40" IsHitTestVisible="False"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+     <Button x:Name="MinimizeButton" Content="−" Width="42" Click="MinimizeNote" ToolTip="Thu nhỏ xuống taskbar"/>
+     <Button Content="×" Width="42" Click="CloseNote" ToolTip="Đóng và lưu ghi chú"/>
+    </StackPanel>
+   </Grid>
+   <TextBox x:Name="Editor" Grid.Row="1" Background="Transparent" BorderThickness="0" Padding="14,12" FontFamily="Segoe UI" FontSize="22" Foreground="#403D30" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" TextChanged="ContentChanged"/>
+   <StackPanel Grid.Row="2" Margin="12,5">
+    <TextBlock x:Name="CaptureStatus" FontSize="11" TextWrapping="Wrap" Foreground="#52653B" ToolTip="Thiết lập Windows không bảo đảm mọi phương thức quay đều hỗ trợ. Hãy quay thử bằng OBS."/>
+    <TextBlock x:Name="SaveStatus" FontSize="11" TextWrapping="Wrap" Foreground="#A13A25" Visibility="Collapsed"/>
+   </StackPanel>
+   <Grid Grid.Row="3" Background="#FFF3B8">
+    <StackPanel Orientation="Horizontal" Margin="6,0">
+     <Button Content="A−" Click="Smaller" ToolTip="Giảm cỡ chữ"/>
+     <TextBlock x:Name="FontLabel" VerticalAlignment="Center" Foreground="#665E40" Width="35" TextAlignment="Center"/>
+     <Button Content="A+" Click="Larger" ToolTip="Tăng cỡ chữ"/>
+    </StackPanel>
+    <TextBlock Text="Tự lưu · Luôn nổi" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,22,0" Foreground="#786F4B" FontSize="11"/>
+   </Grid>
+  </Grid>
+ </Border>
+</Window>
